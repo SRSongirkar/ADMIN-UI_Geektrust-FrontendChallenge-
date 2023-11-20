@@ -48,19 +48,6 @@ function App() {
     ));
   };
 
-  const search = () => {
-    const searchInput = document.getElementById('searchInput');
-    const searchTerm = searchInput.value.toLowerCase();
-    const filteredUsers = users.map(user => ({ ...user, selected: false }))
-      .filter(user =>
-        user.id.toLowerCase().includes(searchTerm) ||
-        user.name.toLowerCase().includes(searchTerm) ||
-        user.email.toLowerCase().includes(searchTerm) ||
-        user.role.toLowerCase().includes(searchTerm)
-      );
-    setUsers(filteredUsers);
-    setCurrentPage(1);
-  };
 
   const editRow = (id) => {
     const updatedUsers = users.map(user => ({
@@ -117,10 +104,6 @@ function App() {
     setUsers(updatedUsers);
   };
 
-  const updatePagination = () => {
-    const totalPages = Math.ceil(users.length / pageSize);
-    document.getElementById('currentPage').innerText = `Page ${currentPage} of ${totalPages}`;
-  };
 
   const goToPage = (page) => {
     setCurrentPage(page);
